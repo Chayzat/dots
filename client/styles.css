@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  position: relative;
+  overflow: scroll;
+  background-color: #f0f0f0;
+}
+
+#grids {
+  position: absolute;
+  z-index: -1000000000;
+  top: -100vh;
+}
