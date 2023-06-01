@@ -30,9 +30,14 @@ $.ajax(url)
       dotTable(
         comments,
         comments.map((dot) => dot.dotId),
-        comments.map((dot) => dot.commentColor)
+        comments
       );
-      domToImage(document.getElementById(`grid-${dotId}`), pointX, pointY, radius);
+      domToImage(
+        document.getElementById(`grid-${dotId}`),
+        pointX,
+        pointY,
+        radius
+      );
     });
   })
   .fail((_, status) => console.log("error:", status));
@@ -63,8 +68,19 @@ function dotTable(data, dots, color) {
     const grid = document.createElement("div");
     grid.id = "grid-" + id;
     grids.append(grid);
-    const table = new Table(id, data, color);
+    //
+    const table = new Table(id, data);
     table.createTable();
+    //
+    $(`#grid-${id}`).find("tr.k-table-row").addClass(`color-${id}`);
+    const arr = Array.from(document.querySelectorAll(`.color-${id} > td`));
+    //
+    for (let i = 0; i < arr.length; i++) {
+      $(arr[i]).css({
+        "background-color": color[i].commentColor,
+        "text-align": 'center'
+      });
+    }
   });
 }
 

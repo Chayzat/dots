@@ -9,7 +9,7 @@ export class Image {
   createImage() {
     return Konva.Image.fromURL(this.url, (darthNode) => {
       darthNode.setAttrs({
-        x: this.x-30-this.radius,
+        x: this.x-60-this.radius,
         y: this.y+5+this.radius,
         scaleX: 0.5,
         scaleY: 0.5,
